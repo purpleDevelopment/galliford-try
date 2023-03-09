@@ -1,0 +1,36 @@
+<ion-header class="navBar">
+    <ion-toolbar>
+        <ion-buttons class="menuIcon" slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="companyLogo">
+            <ion-img (click)="home()" src="/assets/gallifortLogo.svg"></ion-img>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="appContent">
+    <div class="heading" *ngIf="links[0]?.category.fields.slug!='tools-and-resources'">
+        <h1>{{links[0]?.fields.articleCategory.fields.title}}</h1>
+    </div>
+    <div class="heading2" *ngIf="links[0]?.category.fields.slug==='tools-and-resources'">
+        <h1>{{links[0]?.fields.articleCategory.fields.title}}</h1>
+    </div>
+
+    <div class="pageListing">
+        <ul>
+            <li (click)="open(link)" *ngFor="let link of links">
+                {{link.fields.title}}
+                <div class="icon">
+                    <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                </div>
+            </li>
+        </ul>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-img src="/assets/challengingBeliefs.png"></ion-img>
+    </ion-toolbar>
+</ion-footer>
+

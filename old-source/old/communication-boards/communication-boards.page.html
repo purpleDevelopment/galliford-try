@@ -1,0 +1,49 @@
+<ion-header class="navBar">
+    <ion-toolbar>
+        <ion-buttons class="menuIcon" slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="companyLogo">
+            <ion-img (click)="home()" src="/assets/gallifortLogo.svg"></ion-img>
+        </div>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="appContent">
+    <div class="articleContent">
+        <div class="hero">
+            <ion-img src="/assets/articleHerotwo.jpg"></ion-img>
+        </div>
+        <div class="articleHeading">
+            <h1>Communication Boards</h1>
+        </div>
+        <div class="row rowPadding">
+            <p>Communication Boards can be used to summarise information from a number of the tools in a 'You Said, We
+                Did', easy to understand style. They are typically used to communicate the outcomes of NAB Teams along
+                with NEMOs and other key information. </p>
+            <p>Appendix (X) shows an example Communication Board layout.</p>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar class="footerBar">
+        <div class="footer footerLinks">
+            <ul>
+                <li>
+                    <ion-buttons>
+                        <ion-back-button defaultHref="">
+                        </ion-back-button>
+                    </ion-buttons>
+                </li>
+                <li class="next" routerLink="/page-listing" routeDirection="forward">
+                    Next topic
+                    <div class="icon">
+                        <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ion-toolbar>
+</ion-footer>
+

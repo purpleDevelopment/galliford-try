@@ -1,0 +1,55 @@
+<ion-header class="navBar">
+    <ion-toolbar>
+        <ion-buttons class="menuIcon" slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="companyLogo">
+            <ion-img (click)="home()" src="/assets/gallifortLogo.svg"></ion-img>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="appContent">
+    <div class="heading">
+        <h1>Our Safety Leadership<br>Programme</h1>
+    </div>
+    <div class="pageListing">
+        <ul>
+            <li routerLink="/welcome-to-a-world-of-safer-working" routeDirection="forward">
+                Welcome to a world of<br>safer working
+                <div class="icon">
+                    <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                </div>
+            </li>
+            <li routerLink="/our-safety-vision" routeDirection="forward">
+                Our safety vision
+                <div class="icon">
+                    <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                </div>
+            </li>
+            <li routerLink="/focusing-on-our-people" routeDirection="forward">
+                Focusing on our people
+                <div class="icon">
+                    <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                </div>
+            </li>
+            <li routerLink="/industry-leading-hss" routeDirection="forward">
+                An industry-leading health<br>and safety strategy
+                <div class="icon">
+                    <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                </div>
+            </li>
+            <li routerLink="/embrace-the-challenge" routeDirection="forward">
+                Embrace the challenge
+                <div class="icon">
+                    <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                </div>
+            </li>
+        </ul>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-img src="/assets/challengingBeliefs.png"></ion-img>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,60 @@
+<ion-header class="navBar">
+    <ion-toolbar>
+        <ion-buttons class="menuIcon" slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="companyLogo">
+            <ion-img (click)="home()" src="/assets/gallifortLogo.svg"></ion-img>
+        </div>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="appContent">
+    <div class="articleContent">
+        <div class="hero">
+            <ion-img src="/assets/articleHerotwo.jpg"></ion-img>
+        </div>
+        <div class="articleHeading">
+            <h1>Site Safety Charter</h1>
+        </div>
+        <div class="row rowPadding">
+            <p>The Site Safety Charter allows the site management team to develop site-specific goals and visually
+                demonstrate senior management commitment to the Challenging Beliefs, Affecting Behaviour initiative.
+                Sites are encouraged to develop their own site-specific safety commitments in addition to those shown
+                below.</p>
+            <p>The Safety Charter Commitments</p>
+            <ol>
+                <li>Nothing we do is so important that we cannot take the time to do it safely.</li>
+                <li>The safety of our employees, colleagues and the public is paramount.</li>
+                <li>I will endeavour to help everyone I work with to work safely and prevent unsafe working practices.
+                </li>
+                <li>I will never knowingly walk past an unsafe act or condition.</li>
+                <li>I am committed to the principle that all accidents are preventable.</li>
+                <li>I will lead by example.</li>
+            </ol>
+
+            <p>Appendix 10 includes the full Safety Charter.</p>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar class="footerBar">
+        <div class="footer footerLinks">
+            <ul>
+                <li>
+                    <ion-buttons>
+                        <ion-back-button defaultHref="">
+                        </ion-back-button>
+                    </ion-buttons>
+                </li>
+                <li class="next" routerLink="/pcs" routeDirection="forward">
+                    Next topic
+                    <div class="icon">
+                        <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ion-toolbar>
+</ion-footer>

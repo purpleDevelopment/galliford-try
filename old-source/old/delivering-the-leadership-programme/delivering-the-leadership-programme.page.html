@@ -1,0 +1,38 @@
+<ion-header class="navBar">
+    <ion-toolbar>
+        <ion-buttons class="menuIcon" slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="companyLogo">
+            <ion-img (click)="home()" src="/assets/gallifortLogo.svg"></ion-img>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="appContent">
+    <div class="heading">
+        <h1>Delivering the Leadership<br>Programme</h1>
+    </div>
+    <div class="pageListing">
+        <ul>
+            <li routerLink="/the-toolkit" routeDirection="forward">
+                The Toolkit
+                <div class="icon">
+                    <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                </div>
+            </li>
+            <li routerLink="/leadership-success" routeDirection="forward">
+                Leadership will<br>ensure success
+                <div class="icon">
+                    <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-img src="/assets/challengingBeliefs.png"></ion-img>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,51 @@
+<ion-header class="navBar">
+    <ion-toolbar>
+        <ion-buttons class="menuIcon" slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="companyLogo">
+            <ion-img (click)="home()" src="/assets/gallifortLogo.svg"></ion-img>
+        </div>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="appContent">
+    <div class="articleContent">
+        <div class="hero">
+            <ion-img src="/assets/articleHerotwo.jpg"></ion-img>
+        </div>
+        <div class="articleHeading">
+            <h1>Induction boards </h1>
+        </div>
+        <div class="row rowPadding">
+            <p>Induction boards provide an innovative and interesting means of communicating health and safety
+                information to new personnel to workplaces. The board is intended to reduce the amount of time
+                inductions take and should be utilised in conjunction with other &ldquo;informative&rdquo; tools such as First Ten
+                Minutes, SBD&lsquo;s, etc. Boards should be &ldquo;personalised&rdquo; to the respective site / workplace by using
+                photographs / organograms / layout drawings, etc. </p>
+            <p>Appendix (X) shows an example Induction Board layout</p>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar class="footerBar">
+        <div class="footer footerLinks">
+            <ul>
+                <li>
+                    <ion-buttons>
+                        <ion-back-button defaultHref="">
+                        </ion-back-button>
+                    </ion-buttons>
+                </li>
+                <li class="next" routerLink="/communication-boards" routeDirection="forward">
+                    Next topic
+                    <div class="icon">
+                        <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ion-toolbar>
+</ion-footer>
+

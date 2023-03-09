@@ -1,0 +1,181 @@
+.companyLogo {
+  width: 100%;
+  max-width: 115px;
+  margin: 0 auto;
+}
+
+.menuIcon {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.menuIcon .button {
+  --color: #548c99;
+}
+
+ion-content {
+  --background: #fff;
+}
+
+ion-icon {
+  font-size: 50px;
+}
+
+.articleHeading {
+  margin: 0 0 20px 15px;
+}
+
+.articleHeading h1 {
+  padding: 20px 0 15px 20px;
+  border-bottom: 1px solid rgba(154, 156, 158, 0.75);
+  margin: 0;
+  color: #202230;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: bold;
+}
+
+.row {
+  margin: 0 0 0 15px;
+}
+
+.rowPadding {
+  padding: 0 20px;
+}
+
+.back {
+  padding: 10px;
+  background: url(../../assets/headingBG.jpg) no-repeat top center;
+  background-size: cover;
+  color: #fff;
+}
+
+.back .button {
+  color: #fff;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: bold;
+}
+
+.appContent {
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+}
+
+.appContent p {
+  color: #575967;
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0 0 20px 0;
+}
+
+.rowBlockQuote {
+  margin: 0 0 20px 0;
+  padding: 30px 65px 45px 50px;
+  background: url(../../assets/blockquoteOneBG.png) no-repeat bottom center;
+  background-size: cover;
+  position: relative;
+}
+
+.rowBlockQuote.blue {
+  background: url(../../assets/blockquoteTwoBG.png) no-repeat bottom center;
+  background-size: cover;
+}
+
+.rowBlockQuote .icon {
+  position: absolute;
+  width: 30px;
+  height: 20px;
+}
+
+.rowBlockQuote .speechLeft {
+  left: 3%;
+  top: 15%;
+}
+
+.rowBlockQuote .speechRight {
+  right: 10%;
+  bottom: 25%;
+}
+
+.rowBlockQuote p {
+  font-style: italic;
+  font-size: 18px;
+  line-height: 22px;
+  color: #202230;
+  margin: 0;
+}
+
+.rowAuthor {
+  margin: 60px 0 40px 20px;
+  padding: 0 20px;
+}
+
+.rowAuthor p {
+  margin: 0;
+}
+
+.footerLinks ul {
+  margin: 0;
+  padding: 0px;
+  background: url(../../assets/headingBG.jpg) no-repeat top center;
+  background-size: cover;
+}
+
+.footerLinks ul li {
+  display: inline-block;
+  margin: 0;
+  width: 68%;
+  position: relative;
+  padding: 24px 60px 24px 0;
+  text-align: center;
+  line-height: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-align: right;
+  vertical-align: middle;
+}
+
+.footerLinks ul li .button {
+  color: #fff;
+  margin: 0 auto;
+  font-size: 16px;
+}
+
+.footerLinks ul li .button .button-inner .sc-ion-back-button-ios {
+  display: none;
+}
+
+.footerLinks ul li .icon {
+  width: 14px;
+  height: 15px;
+  position: absolute;
+  right: 10%;
+  top: 40%;
+}
+
+.footerLinks ul li:first-of-type {
+  width: 32%;
+  background: #9a9c9e;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: normal;
+  padding-right: 0;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+

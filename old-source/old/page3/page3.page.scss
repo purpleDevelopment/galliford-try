@@ -1,0 +1,94 @@
+.header {
+  background: #202230;
+  display: block;
+}
+
+img {
+  display: block;
+}
+
+ion-content {
+  --background: url(../../assets/footerBG.jpg) no-repeat top center;
+  background-size: cover;
+}
+
+.pageContent {
+  background: url(../../assets/NavyBG.jpg) no-repeat top center;
+  background-size: cover;
+  text-align: center;
+}
+
+.pageContent .pageContentText {
+  padding: 50px 30px 50px 30px;
+}
+
+.pageContent .pageContentText h1 {
+  margin: 0 0 15px 0;
+  color: #fff;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.pageContent .pageContentText p {
+  color: #9a9c9e;
+  font-size: 22px;
+  line-height: 26px;
+  margin: 0 0 30px 0;
+}
+
+.footer {
+  display: block;
+  padding: 40px 0 60px 0;
+  background: url(../../assets/footerBG.jpg) no-repeat top center;
+  background-size: cover;
+  text-align: center;
+}
+
+.footer ul {
+  margin: 0;
+  display: inline-block;
+  padding: 0;
+}
+
+.footer ul li {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin: 0 20px 0 0;
+  background: rgba(154, 156, 158, 0.7);
+  -webkit-border-radius: 18px 18px 18px 18px;
+  border-radius: 18px 18px 18px 18px;
+}
+
+.footer ul li.active {
+  border: 2px solid #fff;
+  background: none;
+}
+
+.footer ul li:last-of-type {
+  margin-right: 0;
+}
+
+button {
+  display: block;
+  padding: 22px 80px 22px 64px;
+  border-radius: 8px;
+  color: #202230;
+  background: #fff;
+  font-size: 22px;
+  line-height: 22px;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+button .icon {
+  position: absolute;
+  width: 14px;
+  height: 15px;
+  right: 55px;
+  top: 22px;
+}

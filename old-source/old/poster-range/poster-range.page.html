@@ -1,0 +1,49 @@
+<ion-header class="navBar">
+    <ion-toolbar>
+        <ion-buttons class="menuIcon" slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="companyLogo">
+            <ion-img (click)="home()" src="/assets/gallifortLogo.svg"></ion-img>
+        </div>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="appContent">
+    <div class="articleContent">
+        <div class="hero">
+            <ion-img src="/assets/articleHerotwo.jpg"></ion-img>
+        </div>
+        <div class="articleHeading">
+            <h1>Behavioural safety poster range</h1>
+        </div>
+        <div class="row rowPadding">
+            <p>A suite of posters has been developed to reinforce the behavioural safety message across our sites and
+                will be further developed as the behavioural programme progresses. Posters should be displayed
+                throughout the site and periodically changed to reinforce specific messages.</p>
+            <p>Appendix 12 includes our library of health and safety posters.</p>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar class="footerBar">
+        <div class="footer footerLinks">
+            <ul>
+                <li>
+                    <ion-buttons>
+                        <ion-back-button defaultHref="">
+                        </ion-back-button>
+                    </ion-buttons>
+                </li>
+                <li class="next" routerLink="/toolbox-talks" routeDirection="forward">
+                    Next topic
+                    <div class="icon">
+                        <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ion-toolbar>
+</ion-footer>
+

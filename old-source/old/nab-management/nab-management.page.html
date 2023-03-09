@@ -1,0 +1,53 @@
+<ion-header class="navBar">
+    <ion-toolbar>
+        <ion-buttons class="menuIcon" slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="companyLogo">
+            <ion-img (click)="home()" src="/assets/gallifortLogo.svg"></ion-img>
+        </div>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="appContent">
+    <div class="articleContent">
+        <div class="hero">
+            <ion-img src="/assets/articleHerotwo.jpg"></ion-img>
+        </div>
+        <div class="articleHeading">
+            <h1>NAB management and delivery</h1>
+        </div>
+        <div class="row rowPadding">
+            <p>Anyone who works on site for a minimum of two weeks can join a NAB Team. It is recommended that
+                representatives from key subcontractors and the local Health and Safety Advisor should also be involved.
+                The NAB Team will determine the positive behaviours expected and encourage ownership of safety by all
+                persons on site. Agreement will be sought to ensure team members engage with all operatives to encourage
+                safe behaviour, regardless of the direct management chain. Culture Change Workshops can be used in the
+                delivery of NAB, both to explain key actions required and to train ‘change leaders’ on how to facilitate
+                a safety excellence culture and commit to a personal safety action plan.</p>
+            <p>Appendix 6 provides a comprehensive overview of the NAB pack.</p>
+            <p>Appendix 7 references the NAB Team training presentation.</p>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar class="footerBar">
+        <div class="footer footerLinks">
+            <ul>
+                <li>
+                    <ion-buttons>
+                        <ion-back-button defaultHref="">
+                        </ion-back-button>
+                    </ion-buttons>
+                </li>
+                <li class="next" routerLink="/sbd" routeDirection="forward">
+                    Next topic
+                    <div class="icon">
+                        <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ion-toolbar>
+</ion-footer>

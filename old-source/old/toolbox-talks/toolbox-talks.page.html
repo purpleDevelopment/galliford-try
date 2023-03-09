@@ -1,0 +1,53 @@
+<ion-header class="navBar">
+    <ion-toolbar>
+        <ion-buttons class="menuIcon" slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="companyLogo">
+            <ion-img (click)="home()" src="/assets/gallifortLogo.svg"></ion-img>
+        </div>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="appContent">
+    <div class="articleContent">
+        <div class="hero">
+            <ion-img src="/assets/articleHerotwo.jpg"></ion-img>
+        </div>
+        <div class="articleHeading">
+            <h1>Toolbox Talks</h1>
+        </div>
+        <div class="row rowPadding">
+            <p>The Toolbox Talks play a major part in communicating our Challenging Beliefs, Affecting Behaviour
+                initiative to operatives. A suite of Toolbox Talks has been developed to assist site management, coaches
+                and contractors to reinforce the behavioural safety message to the workforce in bite-sized chunks,
+                concentrating on key areas such as intervention and risk.The Toolbox Talk library will expand as the
+                programme grows and as a result of future developments in behavioural safety, and feedback from NAB
+                forums, site operatives and coaches.</p>
+            <p>Appendix 13 includes Toolbox Talks for Behavioural Safety, Safe Behaviour Discussions (SBDs) and Near
+                Miss Reporting.</p>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar class="footerBar">
+        <div class="footer footerLinks">
+            <ul>
+                <li>
+                    <ion-buttons>
+                        <ion-back-button defaultHref="">
+                        </ion-back-button>
+                    </ion-buttons>
+                </li>
+                <li class="next" routerLink="/first-ten-minutes" routeDirection="forward">
+                    Next topic
+                    <div class="icon">
+                        <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ion-toolbar>
+</ion-footer>
+

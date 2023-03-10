@@ -6,11 +6,12 @@ import React, {useState} from 'react'
 
 // Custom Components
 
+
 export default function ArticleListItem( {article, navigation} ) {
 
     
     const handlePress = (e) => {
-        navigation.navigate('Article', {articleID: article.sys.id});
+        navigation.navigate('ArticleScreen', {articleID: article.sys.id});
     }
 
   return (

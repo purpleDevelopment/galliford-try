@@ -1,14 +1,15 @@
 // React Native Default
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, SafeAreaView} from 'react-native';
 import React, {useState, useEffect} from 'react';
 
 // Imported Node Modules
 import axios from 'axios';
 
 // Custom Components
-import ArticleTypeBox from "./ArticleTypeBox";
+import ArticleTypeBox from '../Components/ArticleTypeBox';
+import NavBar from '../Components/NavBar';
 
-export default function Home( {navigation} ) {
+export default function HomeScreen({navigation, route}) {
   const [articleTypes, setArticleTypes] = useState([]);
 
   useEffect(() => {
@@ -21,10 +22,13 @@ export default function Home( {navigation} ) {
   }, []);
 
   return (
-    <ScrollView>
-      {articleTypes.map((type, i) => {
-        return <ArticleTypeBox key={i} type={type} navigation={navigation}/>;
-      })}
-    </ScrollView>
+    <SafeAreaView>
+      <NavBar navigation={navigation} showBack={false} />
+      <ScrollView>
+        {articleTypes.map((type, i) => {
+          return <ArticleTypeBox key={i} type={type} navigation={navigation}/>;
+        })}
+      </ScrollView>
+    </SafeAreaView>
   );
 }

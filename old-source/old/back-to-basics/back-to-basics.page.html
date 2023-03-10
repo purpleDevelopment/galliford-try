@@ -1,0 +1,66 @@
+<ion-header class="navBar">
+    <ion-toolbar>
+        <ion-buttons class="menuIcon" slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="companyLogo">
+            <ion-img (click)="home()" src="/assets/gallifortLogo.svg"></ion-img>
+        </div>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="appContent">
+    <div class="articleContent">
+        <div class="hero">
+            <ion-img src="/assets/articleHeroOne.png"></ion-img>
+        </div>
+        <div class="articleHeading">
+            <h1>Back to basics</h1>
+        </div>
+        <div class="row rowPadding">
+            <p>Back to Basics is a refocus. It is about concentrating on what is important to enable YOU to carry out
+                YOUR tasks safely. </p>
+            <p>A significant proportion of incidents on Galliford Try sites are caused by either the wrong person, the
+                wrong equipment, a lack of planning or site conditions which are not conducive to safe working. Simply
+                put, Back to Basics will achieve a greater level of Health and Safety performance. Back to Basics has
+                four key elements for you to ask yourselves:</p>
+            <ul>
+                <li>The right person</li>
+                <li>The right equipment</li>
+                <li>The right planning</li>
+                <li>The right workplace</li>
+            </ul>
+
+            <p>To work safely on a Galliford Try Group site, YOU must answer yes to all the above points. If the answer
+                to one or more of the above is no, you have the authority of the Galliford Try Executive Chairman to
+                stop work and speak to your Supervisor. YOU must not recommence until YOU can answer yes to all of the
+                above points. </p>
+            <p>Galliford Try firmly believe that if all persons on our sites can answer yes to the above points, we can
+                eliminate the vast majority of our incidents. We believe everybody has the right to go home safely every
+                day – do you share our vision?</p>
+
+        </div>
+    </div>
+
+</ion-content>
+<ion-footer>
+    <ion-toolbar class="footerBar">
+        <div class="footer footerLinks">
+            <ul>
+                <li>
+                    <ion-buttons>
+                        <ion-back-button defaultHref="">
+                        </ion-back-button>
+                    </ion-buttons>
+                </li>
+                <li class="next" routerLink="/welcome-to-a-world-of-safer-working" routeDirection="forward">
+                    Next topic
+                    <div class="icon">
+                        <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,86 @@
+<ion-header class="navBar">
+    <ion-toolbar>
+        <ion-buttons class="menuIcon" slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="companyLogo">
+            <ion-img (click)="home()" src="/assets/gallifortLogo.svg"></ion-img>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<div class="spinner-wrapper" *ngIf="uploadIsInProgress">
+    <ion-spinner name="bubbles"></ion-spinner>
+</div>
+
+<ion-content class="appContent">
+    <div class="heading">
+        <h1> Upload your best practice</h1>
+    </div>
+
+    <div class='uploadForm'>
+        <ion-list class="first-list">
+            <div (click)="takePicture()" *ngIf="!picture?.content" class='descim no-image'>
+                <ion-img src="/assets/camera.png"></ion-img>
+            </div>
+            <div (click)="takePicture()" *ngIf="!!picture?.content" class='descim'>
+                <ion-img [src]="picture?.content"></ion-img>
+            </div>
+            <div class='descinp'>
+                <ion-textarea [(ngModel)]="fields.description" placeholder="Add Description..."></ion-textarea>
+            </div>
+            <div class="clearer"></div>
+        </ion-list>
+
+        <ion-item class="text-input">
+            <ion-label position="floating">Title</ion-label>
+            <ion-input [(ngModel)]="fields.title" placeholder="Enter title"></ion-input>
+        </ion-item>
+
+        <ion-item class="text-input">
+            <ion-label position="floating">Name</ion-label>
+            <ion-input [(ngModel)]="fields.name" placeholder="Enter name"></ion-input>
+        </ion-item>
+
+        <ion-item class="text-input">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input [(ngModel)]="fields.email" inputmode="email" placeholder="Enter email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Business Unit</ion-label>
+            <ion-select [(ngModel)]="fields.businessUnit" placeholder="Select a business unit" style='width:100%;'>
+                <ion-select-option *ngFor="let buType of buTypes" [value]="buType.sys.id">{{buType.fields.title}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Tools</ion-label>
+            <ion-select [(ngModel)]="fields.toolsType" placeholder="Select a tool">
+                <ion-select-option *ngFor="let toolsType of toolsTypes" [value]="toolsType.sys.id">{{toolsType.fields.title}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Detail</ion-label>
+            <ion-select [(ngModel)]="fields.detailType" placeholder="Select detail type">
+                <ion-select-option *ngFor="let detailsType of detailsTypes" [value]="detailsType.sys.id">{{detailsType.fields.title}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item class="last">
+            <ion-label>Please tick to state that any individuals in this photo have been told of the intended use, and of their right to object.
+            </ion-label>
+            <ion-checkbox [(ngModel)]="fields.disclaimer" slot="start" value="disclaimer"></ion-checkbox>
+        </ion-item>
+
+        <ion-button expand="full" fill='clear' class="upload-button" (click)="upload()">
+            <span class="text">Upload</span>
+            <ion-img src="/assets/upload.png"></ion-img>
+        </ion-button>
+    </div>
+
+</ion-content>
+<ion-footer>
+
+</ion-footer>

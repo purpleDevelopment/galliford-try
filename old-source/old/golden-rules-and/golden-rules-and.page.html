@@ -1,0 +1,50 @@
+<ion-header class="navBar">
+    <ion-toolbar>
+        <ion-buttons class="menuIcon" slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="companyLogo">
+            <ion-img (click)="home()" src="/assets/gallifortLogo.svg"></ion-img>
+        </div>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="appContent">
+    <div class="articleContent">
+        <div class="hero">
+            <ion-img src="/assets/articleHeroOne.png"></ion-img>
+        </div>
+        <div class="articleHeading">
+            <h1>Golden Rules and Back to Basics</h1>
+        </div>
+        <div class="row rowPadding">
+            <p>Back to Basics and Golden Rules provide focal points for the application of Challenging Beliefs,
+                Affecting Behaviour at the workplace. The tools, developed to meet demand from the business, now form
+                part of the Challenging Beliefs, Affecting Behaviour toolkit. </p>
+
+
+        </div>
+    </div>
+
+</ion-content>
+<ion-footer>
+    <ion-toolbar class="footerBar">
+        <div class="footer footerLinks">
+            <ul>
+                <li>
+                    <ion-buttons>
+                        <ion-back-button defaultHref="">
+                        </ion-back-button>
+                    </ion-buttons>
+                </li>
+                <li class="next" routerLink="/golden-rules" routeDirection="forward">
+                    Next topic
+                    <div class="icon">
+                        <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,58 @@
+<ion-header class="navBar">
+    <ion-toolbar>
+        <ion-buttons class="menuIcon" slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <div class="companyLogo">
+            <ion-img (click)="home()" src="/assets/gallifortLogo.svg"></ion-img>
+        </div>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="appContent">
+
+    <div class="articleContent">
+        <div class="hero">
+            <ion-img src="/assets/articleHerotwo.jpg"></ion-img>
+        </div>
+        <div class="articleHeading">
+            <h1>An industry-leading health and safety strategy</h1>
+        </div>
+        <div class="row rowPadding">
+            <p>Challenging Beliefs, Affecting Behaviour has been designed and maintained in conjunction with our
+                operational teams to set the vision and values of the business, raise awareness of behavioural safety,
+                challenge their beliefs on what can really be achieved within our organisation and thereafter affect the
+                behaviours of our people to reduce the amount of harm and suffering experienced by them in the course of
+                running a successful business.</p>
+
+            <p>The supporting Toolkit houses all the components of the ‘Challenging Beliefs, Affecting Behaviour’ Safety
+                Leadership Programme. As with all toolkits the contents are to be used and adapted according to the
+                environment in which they are to be used. The power of discretion as to what to use and when is a unique
+                function of our programme which empowers site management to use only the tools they believe will
+                maximise health and safety performance. </p>
+        </div>
+
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar class="footerBar">
+        <div class="footer footerLinks">
+            <ul>
+                <li>
+                    <ion-buttons>
+                        <ion-back-button defaultHref="">
+                        </ion-back-button>
+                    </ion-buttons>
+                </li>
+                <li class="next" routerLink="/embrace-the-challenge" routeDirection="forward">
+                    Next topic
+                    <div class="icon">
+                        <ion-img src="/assets/arrowRightWhite.svg"></ion-img>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ion-toolbar>
+</ion-footer>
+

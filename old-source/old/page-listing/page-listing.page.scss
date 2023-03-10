@@ -1,0 +1,69 @@
+body {
+  background: url(../../assets/NavyBG.jpg) no-repeat top center;
+  background-size: cover;
+  text-align: center;
+}
+
+
+ion-content {
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+}
+
+.companyLogo {
+  width: 100%;
+  max-width: 115px;
+  margin: 0 auto;
+}
+
+.menuIcon {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.menuIcon .button {
+  --color: #548c99;
+}
+
+ion-icon {
+  font-size: 50px;
+}
+
+.heading {
+  background: url(../../assets/headingBG.jpg) no-repeat top center;
+  background-size: cover;
+  text-align: center;
+  height: 100px;
+  padding: 30px 26px 0 26px;
+}
+
+.heading h1 {
+  color: #fff;
+  margin: 0;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.linkListing {
+  background: url(../../assets/NavyBG.jpg) no-repeat top center;
+  background-size: cover;
+  text-align: center;
+  padding: 15px 5px;
+}
+
+.grid {
+  padding: 0;
+}
+
+.grid .row {
+  margin: 0 0 15px 0;
+}
+
+.grid .row .column {
+  padding-bottom: 0;
+}

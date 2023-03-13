@@ -1,0 +1,47 @@
+.screenCont {
+  flex: 1;
+  background-color: #000000;
+  flex-direction: column;
+}
+
+.bodyCont {
+  background-color: grey;
+}
+
+.flexGrow {
+  flex-grow: 1;
+}
+
+.headerCont {
+  flex: 1;
+}
+
+.headingBgImage {
+  flex: 1;
+}
+
+.pageGradient {
+  flex-grow: 1;
+}
+
+.pageTitle {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 7%;
+}
+
+.pageCont {
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 15px;
+}
+
+.footer {
+  justify-content: flex-end;
+}
+
+.footerText {
+  color: #ffffff;
+}

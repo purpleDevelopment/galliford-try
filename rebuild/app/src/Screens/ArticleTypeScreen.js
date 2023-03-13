@@ -1,14 +1,25 @@
 // React Native Default
-import {ScrollView, Text, SafeAreaView} from 'react-native';
+import {
+  ScrollView,
+  Text,
+  SafeAreaView,
+  View,
+  ImageBackground,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 
 // Imported Node Modules
 import axios from 'axios';
+import LinearGradient from 'react-native-linear-gradient';
 
 // Custom Components
 import ArticleListItem from '../Components/ArticleListItem';
 import NavBar from '../Components/NavBar';
+import Header from '../Components/Header';
 
+// Stylesheets & Assets
+import styles from '../Styles/Screens.module';
+import bgImage from '../assets/navyBG.jpg';
 
 export default function ArticleTypeScreen({navigation, route}) {
   const [articles, setArticles] = useState([]);
@@ -25,19 +36,31 @@ export default function ArticleTypeScreen({navigation, route}) {
   }, []);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.screenCont}>
       <NavBar navigation={navigation} showBack={true} />
-      <ScrollView>
-        {articles.map((article, i) => {
-          return (
-            <ArticleListItem
-              key={i}
-              article={article}
-              navigation={navigation}
-            />
-          );
-        })}
-      </ScrollView>
+      <ImageBackground
+        source={bgImage}
+        style={styles.pageGradient}
+        resizeMode="cover">
+        <ScrollView style={styles.flexGrow}>
+          <Header title={route.params.articleTitle} />
+
+          {articles.map((article, i) => {
+            console.log(i);
+            return (
+              <ArticleListItem
+                key={i}
+                i={i}
+                articles={articles}
+                navigation={navigation}
+              />
+            );
+          })}
+        </ScrollView>
+      </ImageBackground>
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>This is a footer</Text>
+      </View>
     </SafeAreaView>
   );
 }

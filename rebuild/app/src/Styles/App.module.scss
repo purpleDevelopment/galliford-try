@@ -1,0 +1,20 @@
+.bodyCont {
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 15px;
+}
+
+.box {
+  flex-basis: 50%;
+  margin-bottom: 15px;
+}
+
+.left {
+  padding-right: 7.5px;
+}
+
+.right {
+  padding-left: 7.5px;
+}
+
+

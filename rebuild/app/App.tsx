@@ -8,7 +8,7 @@
 // React Native Default
 import React, {useState, useEffect} from 'react';
 import type {PropsWithChildren} from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import {
   Colors,
   DebugInstructions,
@@ -39,10 +39,9 @@ function App(): JSX.Element {
       <Stack.Navigator
         initialRouteName="HomeScreen"
         screenOptions={{headerShown: false}}>
-        <Stack.Screen name="HomeScreen" component={HomeScreen}/>
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="ArticleTypeScreen" component={ArticleTypeScreen} />
         <Stack.Screen name="ArticleScreen" component={ArticleScreen} />
-        <Stack.Screen name="BurgerScreen" component={BurgerScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

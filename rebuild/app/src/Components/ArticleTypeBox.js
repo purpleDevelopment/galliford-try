@@ -4,8 +4,11 @@ import React, {useState, useEffect} from 'react';
 
 // Imported Node Modules
 import axios from 'axios';
+import LinearGradient from 'react-native-linear-gradient';
 
 // Custom Components
+// Stylesheets & Assets
+import styles from '../Styles/ListStyles.module';
 
 export default function ArticleTypeBox({type, navigation}) {
   const [imageLink, setImageLink] = useState();
@@ -24,26 +27,48 @@ export default function ArticleTypeBox({type, navigation}) {
   }, []);
 
   const handlePress = e => {
-    navigation.navigate('ArticleTypeScreen', {articleTypeID: type.sys.id});
+    navigation.navigate('ArticleTypeScreen', {
+      articleTitle: type.fields.title,
+      articleTypeID: type.sys.id,
+    });
   };
 
   return (
-    <TouchableOpacity
-      style={styles.articleTypeBox}
-      onPress={e => handlePress(e)}>
-      <Image source={{uri: 'https:' + imageLink}} />
-      <Text style={styles.text}>{type.fields.title}</Text>
+    <TouchableOpacity onPress={e => handlePress(e)}>
+      <View style={styles.box}>
+        <Image
+          source={{uri: 'https:' + imageLink}}
+          style={styles.boxThumb}
+          resizeMode="cover"
+        />
+        <Text style={styles.boxText}>{type.fields.title}</Text>
+      </View>
+      <LinearGradient
+        locations={[0.5, 0.5]}
+        colors={['#488090', 'rgba(72, 128, 144, 0)']}
+        height={25}
+        {...{
+          useAngle: true,
+          angle: 175,
+          angleCenter: {x: 0.5, y: 0.5},
+        }}></LinearGradient>
     </TouchableOpacity>
   );
 }
 
-const styles = StyleSheet.create({
-  articleTypeBox: {
-    backgroundColor: '#000000',
-    width: '50%',
-  },
-  text: {
-    color: 'red',
-    fontWeight: 'bold',
-  },
-});
+// const styles = StyleSheet.create({
+//   articleTypeBox: {
+//     backgroundColor: '#488090',
+//     width: '100%',
+//   },
+//   articleTypeImg: {
+//     width: '100%',
+//     height: 150,
+//   },
+//   text: {
+//     color: '#ffffff',
+//     padding: '7%',
+//     fontSize: 20,
+//     fontWeight: 'bold',
+//   },
+// });

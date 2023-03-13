@@ -1,11 +1,21 @@
 // React Native Default
-import {View, Text, Button} from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 
 // Imported Node Modules
 // Custom Components
 
-
+// Stylesheets & Assets
+import styles from '../Styles/NavBar.module';
+import logo from '../assets/logoBlock.jpg';
+import backBtn from '../assets/arrow-left.png';
 
 export default function NavBar({navigation, showBack}) {
   const handleBack = () => {
@@ -13,13 +23,17 @@ export default function NavBar({navigation, showBack}) {
   };
 
   const handleBurger = () => {
-    navigation.navigate('BurgerScreen');
+    // navigation.navigate('BurgerScreen');
+    console.log('Open burger');
   };
 
   return (
-    <View>
-      {showBack ? <Button title="<" onPress={handleBack} /> : ''}
-      <Button title="X" onPress={handleBurger} />
+    <View style={styles.navContainer}>
+      <View>{showBack ? <Button title="Back" onPress={handleBack} /> : null}</View>
+      <Image source={logo} style={styles.logo} resizeMode={'contain'} />
+      <View>
+        <Button title="X" onPress={handleBurger} style={styles.burgerButton} />
+      </View>
     </View>
   );
 }

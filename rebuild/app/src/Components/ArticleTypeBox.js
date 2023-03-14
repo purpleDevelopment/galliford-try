@@ -26,9 +26,8 @@ export default function ArticleTypeBox({type, navigation}) {
     });
   }, []);
 
-  const handlePress = e => {
+  const handlePress = () => {
     navigation.navigate('ArticleTypeScreen', {
-      articleTitle: type.fields.title,
       articleTypeID: type.sys.id,
     });
   };

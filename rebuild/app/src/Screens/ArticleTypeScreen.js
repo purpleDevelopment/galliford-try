@@ -26,6 +26,7 @@ import footerImg from '../assets/challengingBeliefs.png';
 
 export default function ArticleTypeScreen({navigation, route}) {
   const [articles, setArticles] = useState([]);
+  const [title, setTitle] = useState();
   const [isBurgerVisable, setIsBurgerVisable] = useState(false);
 
   useEffect(() => {
@@ -35,6 +36,7 @@ export default function ArticleTypeScreen({navigation, route}) {
         'https://cdn.contentful.com/spaces/kst95g92kfwh/environments/master/entries?access_token=1833b658c22f833fc1c5b37e52ce3dd31eb8a25ef1d1094154346499ad566e50&content_type=article&fields.articleCategory.sys.id=' +
         route.params.articleTypeID,
     }).then(response => {
+      setTitle(response.data.includes.Entry[0].fields.title);
       setArticles(response.data.items);
     });
   }, []);
@@ -45,7 +47,7 @@ export default function ArticleTypeScreen({navigation, route}) {
   return (
     <SafeAreaView style={{flex: 1}}>
       <NavBar navigation={navigation} showBack={true} toggleBurger={toggleBurger}/>
-      <Header title={route.params.articleTitle} />
+      <Header title={title} />
       <ImageBackground
         source={bgImage}
         resizeMode="cover"

@@ -6,13 +6,26 @@ import React, {useEffect, useState} from 'react';
 
 // Custom Components
 
-export default function BurgerListItem({title}) {
-  // const handlePress = e => {
-  //   navigation.navigate('ArticleTypeScreen', {
-  //     articleTitle: page.fields.title,
-  //     articleTypeID: page.sys.id,
-  //   });
-  // };
+export default function BurgerListItem({
+  navigation,
+  setIsBurgerVisable,
+  title,
+  pageID,
+}) {
+  const handlePress = () => {
+    //   navigation.navigate('ArticleTypeScreen', {
+    //     articleTitle: page.fields.title,
+    //     articleTypeID: page.sys.id,
+    //   });
+    console.log(title);
+    console.log(pageID);
+    navigation.navigate('ArticleTypeScreen', {
+      articleTitle: title,
+      articleTypeID: pageID,
+    });
+    setIsBurgerVisable(false);
+  };
+
   return (
     <View
       style={{

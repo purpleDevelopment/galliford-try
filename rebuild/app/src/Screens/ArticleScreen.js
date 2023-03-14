@@ -40,6 +40,7 @@ export default function ArticleScreen({route, navigation}) {
         currentArticle.sys.id +
         '?access_token=1833b658c22f833fc1c5b37e52ce3dd31eb8a25ef1d1094154346499ad566e50',
     }).then(response => {
+      console.log(response);
       setArticleTitle(response.data.fields.title);
       setArticleMarkup(response.data.fields.articleMarkup);
       setImgID(response.data.fields.headerImage.sys.id);
@@ -60,7 +61,10 @@ export default function ArticleScreen({route, navigation}) {
 
   const handleBack = () => {
     if (i == 0) {
-      console.log('next topic');
+      console.log(currentArticle);
+      navigation.navigate('ArticleTypeScreen', {
+        articleTypeID: currentArticle.fields.articleCategory.sys.id,
+      });
     } else {
       navigation.push('ArticleScreen', {articles: articles, i: i - 1});
     }
@@ -68,7 +72,7 @@ export default function ArticleScreen({route, navigation}) {
 
   const handleNext = () => {
     if (i + 1 == articles.length) {
-      console.log('next topic');
+      navigation.navigate('HomeScreen');
     } else {
       navigation.push('ArticleScreen', {articles: articles, i: i + 1});
     }
@@ -80,7 +84,11 @@ export default function ArticleScreen({route, navigation}) {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <NavBar navigation={navigation} showBack={false} toggleBurger={toggleBurger}/>
+      <NavBar
+        navigation={navigation}
+        showBack={false}
+        toggleBurger={toggleBurger}
+      />
       <ScrollView
         style={{
           flex: 1,
@@ -149,9 +157,9 @@ export default function ArticleScreen({route, navigation}) {
           </TouchableOpacity>
         </ImageBackground>
       </View>
-      <Overlay isVisible={isBurgerVisable} onBackdropPress={toggleBurger}>
-        
-      </Overlay>
+      <Overlay
+        isVisible={isBurgerVisable}
+        onBackdropPress={toggleBurger}></Overlay>
     </SafeAreaView>
   );
 }

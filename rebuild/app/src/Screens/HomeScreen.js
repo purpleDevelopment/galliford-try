@@ -15,7 +15,6 @@ import axios from 'axios';
 // Custom Components
 import ArticleTypeBox from '../Components/ArticleTypeBox';
 import ArticleListItem from '../Components/ArticleListItem';
-import BurgerMenu from '../Screens/BurgerMenu';
 import NavBar from '../Components/NavBar';
 import Header from '../Components/Header';
 
@@ -26,7 +25,6 @@ import bgImage from '../assets/navyBG.jpg';
 
 export default function HomeScreen({navigation, route}) {
   const [articleTypes, setArticleTypes] = useState([]);
-  const [isBurgerVisable, setIsBurgerVisable] = useState(false);
 
   useEffect(() => {
     axios({
@@ -47,6 +45,7 @@ export default function HomeScreen({navigation, route}) {
         navigation={navigation}
         showBack={false}
         toggleBurger={toggleBurger}
+        articleTypes={articleTypes}
       />
       <Header title="Challenging Beliefs, Affecting Behaviour" />
       <ImageBackground
@@ -73,7 +72,7 @@ export default function HomeScreen({navigation, route}) {
           </View>
         </ScrollView>
       </ImageBackground>
-      <BurgerMenu isVisible={isBurgerVisable} types={articleTypes}/>
+ 
     </SafeAreaView>
   );
 }

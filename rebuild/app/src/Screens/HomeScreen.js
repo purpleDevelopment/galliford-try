@@ -65,14 +65,41 @@ export default function HomeScreen({navigation, route}) {
                     paddingHorizontal: 10,
                     marginBottom: 25,
                   }}>
-                  <ArticleTypeBox type={type} navigation={navigation} />
+                  <ArticleTypeBox
+                    type={type}
+                    navigation={navigation}
+                    boxColor={
+                      type.fields.title == 'Tools and Resources'
+                        ? '#febd45'
+                        : type.fields.title == 'Sharing Best Practice'
+                        ? '#e47317'
+                        : '#488090'
+                    }
+                  />
                 </View>
               );
             })}
+            {/* <View
+              style={{
+                width: '50%',
+                paddingHorizontal: 10,
+                marginBottom: 25,
+              }}>
+                <ArticleTypeBox
+                    type={type}
+                    navigation={navigation}
+                    boxColor={
+                      type.fields.title == 'Tools and Resources'
+                        ? '#febd45'
+                        : type.fields.title == 'Sharing Best Practice'
+                        ? '#e47317'
+                        : '#488090'
+                    }
+                  />
+              </View> */}
           </View>
         </ScrollView>
       </ImageBackground>
- 
     </SafeAreaView>
   );
 }

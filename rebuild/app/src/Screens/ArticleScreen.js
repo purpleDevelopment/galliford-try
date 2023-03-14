@@ -8,12 +8,15 @@ import {
   Image,
   TouchableOpacity,
   ImageBackground,
+  Linking,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 
 // Imported Node Modules
 import axios from 'axios';
 import {Overlay} from 'react-native-elements';
+import Markdown from 'react-native-markdown-package';
+import FileViewer from 'react-native-file-viewer';
 
 // Custom Components
 import NavBar from '../Components/NavBar';
@@ -21,15 +24,15 @@ import ArticleFooter from '../Components/ArticleFooter';
 import backArrow from '../assets/arrow-left.png';
 import nextArrow from '../assets/arrow-right.png';
 import bgImage from '../assets/footerBG.jpg';
+import quoteBG from '../assets/blockquoteOneBG.png';
 
 export default function ArticleScreen({route, navigation}) {
-  const [isBurgerVisable, setIsBurgerVisable] = useState(false);
   const [articles, setArticles] = useState(route.params.articles);
   const [i, setI] = useState(route.params.i);
   const [currentArticle, setCurrentArticle] = useState(articles[i]);
   const [articleTitle, setArticleTitle] = useState();
   const [articleMarkup, setArticleMarkup] = useState();
-  const [imgID, setImgID] = useState();
+  const [imgID, setImgID] = useState(null);
   const [imageLink, setImageLink] = useState();
 
   useEffect(() => {
@@ -40,7 +43,6 @@ export default function ArticleScreen({route, navigation}) {
         currentArticle.sys.id +
         '?access_token=1833b658c22f833fc1c5b37e52ce3dd31eb8a25ef1d1094154346499ad566e50',
     }).then(response => {
-      console.log(response);
       setArticleTitle(response.data.fields.title);
       setArticleMarkup(response.data.fields.articleMarkup);
       setImgID(response.data.fields.headerImage.sys.id);
@@ -48,15 +50,17 @@ export default function ArticleScreen({route, navigation}) {
   }, []);
 
   useEffect(() => {
-    axios({
-      method: 'get',
-      url:
-        'https://cdn.contentful.com/spaces/kst95g92kfwh/environments/master/assets/' +
-        imgID +
-        '?access_token=1833b658c22f833fc1c5b37e52ce3dd31eb8a25ef1d1094154346499ad566e50',
-    }).then(response => {
-      setImageLink('https:' + response.data.fields.file.url);
-    });
+    if (imgID) {
+      axios({
+        method: 'get',
+        url:
+          'https://cdn.contentful.com/spaces/kst95g92kfwh/environments/master/assets/' +
+          imgID +
+          '?access_token=1833b658c22f833fc1c5b37e52ce3dd31eb8a25ef1d1094154346499ad566e50',
+      }).then(response => {
+        setImageLink('https:' + response.data.fields.file.url);
+      });
+    }
   }, [imgID]);
 
   const handleBack = () => {
@@ -68,6 +72,15 @@ export default function ArticleScreen({route, navigation}) {
     } else {
       navigation.push('ArticleScreen', {articles: articles, i: i - 1});
     }
+  };
+
+  const onLinkCallback = url => {
+    Linking.openURL('https:' + url);
+    const isErrorResult = false;
+
+    return new Promise((resolve, reject) => {
+      isErrorResult ? reject() : resolve();
+    });
   };
 
   const handleNext = () => {
@@ -114,8 +127,11 @@ export default function ArticleScreen({route, navigation}) {
             borderBottomWidth: 1,
             borderBottomColor: 'rgba(154, 156, 158, 0.749)',
           }}></View>
-        <View>
-          <Text style={{padding: 30, paddingTop: 20}}>{articleMarkup}</Text>
+        {/* <Text style={{padding: 30, paddingTop: 20}}>{articleMarkup}</Text> */}
+        <View style={{padding: 30, paddingTop: 20}}>
+          <Markdown styles={{text: {color: 'black'}, link: {color: 'black'}, h4: {backgroundColor: 'blue'}, image: {backgroundColor: 'red'}}} onLink={onLinkCallback}>
+            {articleMarkup}
+          </Markdown>
         </View>
       </ScrollView>
       <View
@@ -157,9 +173,6 @@ export default function ArticleScreen({route, navigation}) {
           </TouchableOpacity>
         </ImageBackground>
       </View>
-      <Overlay
-        isVisible={isBurgerVisable}
-        onBackdropPress={toggleBurger}></Overlay>
     </SafeAreaView>
   );
 }

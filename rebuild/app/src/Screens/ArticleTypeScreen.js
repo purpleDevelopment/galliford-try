@@ -46,7 +46,11 @@ export default function ArticleTypeScreen({navigation, route}) {
   };
   return (
     <SafeAreaView style={{flex: 1}}>
-      <NavBar navigation={navigation} showBack={true} toggleBurger={toggleBurger}/>
+      <NavBar
+        navigation={navigation}
+        showBack={true}
+        toggleBurger={toggleBurger}
+      />
       <Header title={title} />
       <ImageBackground
         source={bgImage}
@@ -74,28 +78,6 @@ export default function ArticleTypeScreen({navigation, route}) {
           resizeMode="contain"
         />
       </View>
-      <Overlay isVisible={isBurgerVisable} onBackdropPress={toggleBurger}>
-        
-      </Overlay>
-      {/* <NavBar navigation={navigation} showBack={true} />
-      <ImageBackground
-        source={bgImage}
-        style={styles.pageGradient}
-        resizeMode="cover">
-        <ScrollView style={styles.flexGrow}>
-          <Header title={route.params.articleTitle} />
-          {articles.map((article, i) => { 
-            return (
-              <ArticleListItem
-                key={i}
-                i={i}
-                articles={articles}
-                navigation={navigation}
-              />
-            );
-          })}
-        </ScrollView>
-      </ImageBackground> */}
     </SafeAreaView>
   );
 }

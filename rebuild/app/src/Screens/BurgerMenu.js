@@ -10,15 +10,40 @@ export default function BurgerMenu({
   setIsBurgerVisable,
   types,
 }) {
-  const [pages, setPages] = useState([]);
+  const [articleTypes, setArticleTypes] = useState();
+  const [staticPages, setStaticPages] = useState();
+  const [pages, setPages] = useState([
+    {fields: {title: 'Home'}, sys: {id: '0000'}},
+  ]);
+  // const aboutLink = {
+  //   fields: {title: 'About this App'},
+  //   sys: {id: '0001', pageType: 'customStatic'},
+  // };
+  // const contactLink = {
+  //   fields: {title: 'Contact Us'},
+  //   sys: {id: '0001', pageType: 'customStatic'},
+  // };
 
   useEffect(() => {
-    axios({
-      method: 'get',
-      url: 'https://cdn.contentful.com/spaces/kst95g92kfwh/environments/master/entries?access_token=1833b658c22f833fc1c5b37e52ce3dd31eb8a25ef1d1094154346499ad566e50&content_type=articleType',
-    }).then(response => {
-      setPages(response.data.items);
-    });
+    if (pages.length > 1) {
+      // Do nothing
+    } else {
+      axios({
+        method: 'get',
+        url: 'https://cdn.contentful.com/spaces/kst95g92kfwh/environments/master/entries?access_token=1833b658c22f833fc1c5b37e52ce3dd31eb8a25ef1d1094154346499ad566e50&content_type=articleType',
+      })
+        .then(response => {
+          setPages(current => [...current, ...response.data.items]);
+        })
+        .then(response => {
+          axios({
+            method: 'get',
+            url: 'https://cdn.contentful.com/spaces/kst95g92kfwh/environments/master/entries?access_token=1833b658c22f833fc1c5b37e52ce3dd31eb8a25ef1d1094154346499ad566e50&content_type=staticPages',
+          }).then(responseB => {
+            setPages(current => [...current, ...responseB.data.items]);
+          });
+        });
+    }
   }, []);
 
   const toggleBurger = () => {
@@ -45,8 +70,7 @@ export default function BurgerMenu({
                 key={i}
                 navigation={navigation}
                 setIsBurgerVisable={setIsBurgerVisable}
-                title={page.fields.title}
-                pageID={page.sys.id}
+                page={page}
               />
             );
           })}

@@ -26,6 +26,7 @@ import HomeScreen from './src/Screens/HomeScreen';
 import ArticleTypeScreen from './src/Screens/ArticleTypeScreen';
 import ArticleScreen from './src/Screens/ArticleScreen';
 import BurgerScreen from './src/Screens/BurgerScreen';
+import CustomStaticPage from './src/Screens/CustomStaticPage';
 
 const Stack = createStackNavigator();
 
@@ -42,6 +43,7 @@ function App(): JSX.Element {
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="ArticleTypeScreen" component={ArticleTypeScreen} />
         <Stack.Screen name="ArticleScreen" component={ArticleScreen} />
+        <Stack.Screen name="CustomStaticPage" component={CustomStaticPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );

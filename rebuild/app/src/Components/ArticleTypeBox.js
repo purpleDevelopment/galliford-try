@@ -10,7 +10,7 @@ import LinearGradient from 'react-native-linear-gradient';
 // Stylesheets & Assets
 import styles from '../Styles/ListStyles.module';
 
-export default function ArticleTypeBox({type, navigation}) {
+export default function ArticleTypeBox({type, navigation, boxColor}) {
   const [imageLink, setImageLink] = useState();
   const iconID = type.fields.icon.sys.id;
 
@@ -33,8 +33,8 @@ export default function ArticleTypeBox({type, navigation}) {
   };
 
   return (
-    <TouchableOpacity onPress={e => handlePress(e)}>
-      <View style={styles.box}>
+    <TouchableOpacity onPress={() => handlePress()}>
+      <View style={[styles.box, {backgroundColor: boxColor}]}>
         <Image
           source={{uri: 'https:' + imageLink}}
           style={styles.boxThumb}
@@ -44,7 +44,7 @@ export default function ArticleTypeBox({type, navigation}) {
       </View>
       <LinearGradient
         locations={[0.5, 0.5]}
-        colors={['#488090', 'rgba(72, 128, 144, 0)']}
+        colors={[boxColor, 'rgba(0, 0, 0, 0)']}
         height={25}
         {...{
           useAngle: true,

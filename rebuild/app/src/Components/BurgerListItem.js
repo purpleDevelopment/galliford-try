@@ -6,23 +6,22 @@ import React, {useEffect, useState} from 'react';
 
 // Custom Components
 
-export default function BurgerListItem({
-  navigation,
-  setIsBurgerVisable,
-  title,
-  pageID,
-}) {
+export default function BurgerListItem({navigation, setIsBurgerVisable, page}) {
   const handlePress = () => {
-    //   navigation.navigate('ArticleTypeScreen', {
-    //     articleTitle: page.fields.title,
-    //     articleTypeID: page.sys.id,
-    //   });
-    console.log(title);
-    console.log(pageID);
-    navigation.navigate('ArticleTypeScreen', {
-      articleTitle: title,
-      articleTypeID: pageID,
-    });
+    if (page.fields.title == 'Home') {
+      navigation.navigate('HomeScreen');
+    } else if (page.sys.contentType.sys.id == 'staticPages') {
+      navigation.navigate('CustomStaticPage', {
+        title: page.fields.title,
+        content: page.fields.pageContent,
+      });
+      // console.log(page.fields.pageContent);
+    } else if (page.sys.contentType.sys.id == 'articleType') {
+      navigation.navigate('ArticleTypeScreen', {
+        articleTitle: page.fields.title,
+        articleTypeID: page.sys.id,
+      });
+    }
     setIsBurgerVisable(false);
   };
 
@@ -43,7 +42,7 @@ export default function BurgerListItem({
           justifyContent: 'space-between',
         }}>
         <Text style={{color: '#ffffff', fontWeight: 'bold', fontSize: 15}}>
-          {title}
+          {page.fields.title}
         </Text>
       </TouchableOpacity>
     </View>

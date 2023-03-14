@@ -55,20 +55,3 @@ export default function ArticleTypeBox({type, navigation}) {
     </TouchableOpacity>
   );
 }
-
-// const styles = StyleSheet.create({
-//   articleTypeBox: {
-//     backgroundColor: '#488090',
-//     width: '100%',
-//   },
-//   articleTypeImg: {
-//     width: '100%',
-//     height: 150,
-//   },
-//   text: {
-//     color: '#ffffff',
-//     padding: '7%',
-//     fontSize: 20,
-//     fontWeight: 'bold',
-//   },
-// });

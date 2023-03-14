@@ -5,12 +5,14 @@ import {
   SafeAreaView,
   View,
   ImageBackground,
+  Image,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 
 // Imported Node Modules
 import axios from 'axios';
 import LinearGradient from 'react-native-linear-gradient';
+import {Overlay} from 'react-native-elements';
 
 // Custom Components
 import ArticleListItem from '../Components/ArticleListItem';
@@ -20,9 +22,11 @@ import Header from '../Components/Header';
 // Stylesheets & Assets
 import styles from '../Styles/Screens.module';
 import bgImage from '../assets/navyBG.jpg';
+import footerImg from '../assets/challengingBeliefs.png';
 
 export default function ArticleTypeScreen({navigation, route}) {
   const [articles, setArticles] = useState([]);
+  const [isBurgerVisable, setIsBurgerVisable] = useState(false);
 
   useEffect(() => {
     axios({
@@ -35,18 +39,50 @@ export default function ArticleTypeScreen({navigation, route}) {
     });
   }, []);
 
+  const toggleBurger = () => {
+    setIsBurgerVisable(!isBurgerVisable);
+  };
   return (
-    <SafeAreaView style={styles.screenCont}>
-      <NavBar navigation={navigation} showBack={true} />
+    <SafeAreaView style={{flex: 1}}>
+      <NavBar navigation={navigation} showBack={true} toggleBurger={toggleBurger}/>
+      <Header title={route.params.articleTitle} />
+      <ImageBackground
+        source={bgImage}
+        resizeMode="cover"
+        style={{
+          flexGrow: 1,
+        }}>
+        <ScrollView style={{flex: 1}}>
+          {articles.map((article, i) => {
+            return (
+              <ArticleListItem
+                key={i}
+                navigation={navigation}
+                articles={articles}
+                i={i}
+              />
+            );
+          })}
+        </ScrollView>
+      </ImageBackground>
+      <View style={{backgroundColor: '#000000', alignItems: 'center'}}>
+        <Image
+          source={footerImg}
+          style={{width: 171, height: 90}}
+          resizeMode="contain"
+        />
+      </View>
+      <Overlay isVisible={isBurgerVisable} onBackdropPress={toggleBurger}>
+        
+      </Overlay>
+      {/* <NavBar navigation={navigation} showBack={true} />
       <ImageBackground
         source={bgImage}
         style={styles.pageGradient}
         resizeMode="cover">
         <ScrollView style={styles.flexGrow}>
           <Header title={route.params.articleTitle} />
-
-          {articles.map((article, i) => {
-            console.log(i);
+          {articles.map((article, i) => { 
             return (
               <ArticleListItem
                 key={i}
@@ -57,10 +93,7 @@ export default function ArticleTypeScreen({navigation, route}) {
             );
           })}
         </ScrollView>
-      </ImageBackground>
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>This is a footer</Text>
-      </View>
+      </ImageBackground> */}
     </SafeAreaView>
   );
 }

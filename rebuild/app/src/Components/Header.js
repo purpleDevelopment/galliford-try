@@ -11,11 +11,11 @@ import image from '../assets/headingBG.jpg';
 
 export default function Header({title}) {
   return (
-    <View style={styles.headerCont}>
+    <View>
       <ImageBackground
         source={image}
-        style={styles.headingBgImage}
-        resizeMode="cover">
+        resizeMode="cover"
+        style={{padding: 20}}>
         <Text style={styles.pageTitle}>{title}</Text>
       </ImageBackground>
     </View>

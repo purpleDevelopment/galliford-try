@@ -14,16 +14,19 @@ import axios from 'axios';
 
 // Custom Components
 import ArticleTypeBox from '../Components/ArticleTypeBox';
+import ArticleListItem from '../Components/ArticleListItem';
+import BurgerMenu from '../Screens/BurgerMenu';
 import NavBar from '../Components/NavBar';
 import Header from '../Components/Header';
 
 // Stylesheets & Assets
-import styles from '../Styles/Screens.module';
-import appStyles from '../Styles/App.module';
+// import styles from '../Styles/Screens.module';
+// import appStyles from '../Styles/App.module';
 import bgImage from '../assets/navyBG.jpg';
 
 export default function HomeScreen({navigation, route}) {
   const [articleTypes, setArticleTypes] = useState([]);
+  const [isBurgerVisable, setIsBurgerVisable] = useState(false);
 
   useEffect(() => {
     axios({
@@ -31,55 +34,46 @@ export default function HomeScreen({navigation, route}) {
       url: 'https://cdn.contentful.com/spaces/kst95g92kfwh/environments/master/entries?access_token=1833b658c22f833fc1c5b37e52ce3dd31eb8a25ef1d1094154346499ad566e50&content_type=articleType',
     }).then(response => {
       setArticleTypes(response.data.items);
-      console.log(response.data.fields);
     });
   }, []);
 
+  const toggleBurger = () => {
+    setIsBurgerVisable(!isBurgerVisable);
+  };
+
   return (
-    <SafeAreaView>
-      <NavBar navigation={navigation} showBack={false} />
+    <SafeAreaView style={{flex: 1}}>
+      <NavBar
+        navigation={navigation}
+        showBack={false}
+        toggleBurger={toggleBurger}
+      />
+      <Header title="Challenging Beliefs, Affecting Behaviour" />
       <ImageBackground
         source={bgImage}
-        style={styles.pageGradient}
-        resizeMode="cover">
-        <ScrollView>
-          <Header title="Challenging Beliefs,  Affecting Behaviour" />
-            <View style={styles.pageCont}>
-              {articleTypes.map((type, i) => {
-                return (
-                  <View
-                    key={i}
-                    style={
-                      i % 2 == 0
-                        ? [appStyles.box, appStyles.left]
-                        : [appStyles.box, appStyles.right]
-                    }>
-                    <ArticleTypeBox type={type} navigation={navigation} />
-                  </View>
-                );
-              })}
-            </View>
+        resizeMode="cover"
+        style={{
+          flexGrow: 1,
+        }}>
+        <ScrollView style={{flex: 1}}>
+          <View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
+            {articleTypes.map((type, i) => {
+              return (
+                <View
+                  key={i}
+                  style={{
+                    width: '50%',
+                    paddingHorizontal: 10,
+                    marginBottom: 25,
+                  }}>
+                  <ArticleTypeBox type={type} navigation={navigation} />
+                </View>
+              );
+            })}
+          </View>
         </ScrollView>
       </ImageBackground>
+      <BurgerMenu isVisible={isBurgerVisable} types={articleTypes}/>
     </SafeAreaView>
   );
 }
-
-// const styles = StyleSheet.create({
-//   bodyCont: {
-//     padding: 15,
-//     flexDirection: 'row',
-//     flexWrap: 'wrap',
-//   },
-//   articleTypeBoxContainer: {
-//     flexBasis: '50%',
-//     marginBottom: 15,
-//   },
-//   articleTypeBoxLeft: {
-//     paddingLeft: 15,
-//   },
-//   text: {
-//     color: 'red',
-//     fontWeight: 'bold',
-//   },
-// });

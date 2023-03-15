@@ -48,7 +48,7 @@ export default function ArticleTypeScreen({navigation, route}) {
     <SafeAreaView style={{flex: 1}}>
       <NavBar
         navigation={navigation}
-        showBack={true}
+        showBack={false}
         toggleBurger={toggleBurger}
       />
       <Header title={title} />

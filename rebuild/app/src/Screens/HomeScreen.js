@@ -15,6 +15,8 @@ import axios from 'axios';
 // Custom Components
 import ArticleTypeBox from '../Components/ArticleTypeBox';
 import ArticleListItem from '../Components/ArticleListItem';
+import BestPracticeBox from '../Components/BestPracticeBox';
+
 import NavBar from '../Components/NavBar';
 import Header from '../Components/Header';
 
@@ -40,66 +42,68 @@ export default function HomeScreen({navigation, route}) {
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <NavBar
-        navigation={navigation}
-        showBack={false}
-        toggleBurger={toggleBurger}
-        articleTypes={articleTypes}
-      />
-      <Header title="Challenging Beliefs, Affecting Behaviour" />
-      <ImageBackground
-        source={bgImage}
-        resizeMode="cover"
-        style={{
-          flexGrow: 1,
-        }}>
-        <ScrollView style={{flex: 1}}>
-          <View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
-            {articleTypes.map((type, i) => {
-              return (
-                <View
-                  key={i}
-                  style={{
-                    width: '50%',
-                    paddingHorizontal: 10,
-                    marginBottom: 25,
-                  }}>
-                  <ArticleTypeBox
-                    type={type}
-                    navigation={navigation}
-                    boxColor={
-                      type.fields.title == 'Tools and Resources'
-                        ? '#febd45'
-                        : type.fields.title == 'Sharing Best Practice'
-                        ? '#e47317'
-                        : '#488090'
-                    }
-                  />
-                </View>
-              );
-            })}
-            {/* <View
-              style={{
-                width: '50%',
-                paddingHorizontal: 10,
-                marginBottom: 25,
-              }}>
-                <ArticleTypeBox
-                    type={type}
-                    navigation={navigation}
-                    boxColor={
-                      type.fields.title == 'Tools and Resources'
-                        ? '#febd45'
-                        : type.fields.title == 'Sharing Best Practice'
-                        ? '#e47317'
-                        : '#488090'
-                    }
-                  />
-              </View> */}
-          </View>
-        </ScrollView>
-      </ImageBackground>
-    </SafeAreaView>
+    <View style={{flex: 1, backgroundColor: '#202230'}}>
+      <SafeAreaView style={{flex: 1}}>
+        <NavBar
+          navigation={navigation}
+          showBack={false}
+          toggleBurger={toggleBurger}
+        />
+        <Header title="Challenging Beliefs, Affecting Behaviour" />
+        <ImageBackground
+          source={bgImage}
+          resizeMode="cover"
+          style={{
+            flexGrow: 1,
+          }}>
+          <ScrollView style={{flex: 1}}>
+            <View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
+              {articleTypes.map((type, i) => {
+                return (
+                  <View
+                    key={i}
+                    style={{
+                      width: '50%',
+                      paddingHorizontal: 10,
+                      marginBottom: 25,
+                    }}>
+                    <ArticleTypeBox
+                      type={type}
+                      navigation={navigation}
+                      boxColor={
+                        type.fields.title == 'Tools and Resources'
+                          ? '#febd45'
+                          : type.fields.title == 'Sharing Best Practice'
+                          ? '#e47317'
+                          : '#488090'
+                      }
+                    />
+                  </View>
+                );
+              })}
+              <View
+                style={{
+                  width: '50%',
+                  paddingHorizontal: 10,
+                  marginBottom: 25,
+                }}>
+                <BestPracticeBox navigation={navigation} boxColor="#e47317" />
+                {/* <ArticleTypeBox
+              type={type}
+              navigation={navigation}
+              boxColor={
+                type.fields.title == 'Tools and Resources'
+                  ? '#febd45'
+                  : type.fields.title == 'Sharing Best Practice'
+                  ? '#e47317'
+                  : '#488090'
+              }
+            /> */}
+              </View>
+            </View>
+          </ScrollView>
+        </ImageBackground>
+      </SafeAreaView>
+    </View>
   );
 }

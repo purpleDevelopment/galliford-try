@@ -42,15 +42,17 @@ export default function ArticleTypeBox({type, navigation, boxColor}) {
         />
         <Text style={styles.boxText}>{type.fields.title}</Text>
       </View>
-      <LinearGradient
-        locations={[0.5, 0.5]}
-        colors={[boxColor, 'rgba(0, 0, 0, 0)']}
-        height={25}
-        {...{
-          useAngle: true,
-          angle: 175,
-          angleCenter: {x: 0.5, y: 0.5},
-        }}></LinearGradient>
+      <View style={{top:-1}}>
+        <LinearGradient
+          locations={[0.5, 0.5]}
+          colors={[boxColor, 'rgba(0, 0, 0, 0)']}
+          height={25}
+          {...{
+            useAngle: true,
+            angle: 175,
+            angleCenter: {x: 0.5, y: 0.5},
+          }}></LinearGradient>
+      </View>
     </TouchableOpacity>
   );
 }

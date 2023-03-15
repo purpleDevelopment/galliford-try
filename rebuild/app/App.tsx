@@ -27,6 +27,8 @@ import ArticleTypeScreen from './src/Screens/ArticleTypeScreen';
 import ArticleScreen from './src/Screens/ArticleScreen';
 import BurgerScreen from './src/Screens/BurgerScreen';
 import CustomStaticPage from './src/Screens/CustomStaticPage';
+import BestPracticeScreen from './src/Screens/BestPracticeScreen';
+import BestPracticeItemScreen from './src/Screens/BestPracticeItemScreen';
 
 const Stack = createStackNavigator();
 
@@ -43,6 +45,14 @@ function App(): JSX.Element {
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="ArticleTypeScreen" component={ArticleTypeScreen} />
         <Stack.Screen name="ArticleScreen" component={ArticleScreen} />
+        <Stack.Screen
+          name="BestPracticeScreen"
+          component={BestPracticeScreen}
+        />
+        <Stack.Screen
+          name="BestPracticeItemScreen"
+          component={BestPracticeItemScreen}
+        />
         <Stack.Screen name="CustomStaticPage" component={CustomStaticPage} />
       </Stack.Navigator>
     </NavigationContainer>

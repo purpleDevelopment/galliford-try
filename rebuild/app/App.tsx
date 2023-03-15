@@ -28,7 +28,9 @@ import ArticleScreen from './src/Screens/ArticleScreen';
 import BurgerScreen from './src/Screens/BurgerScreen';
 import CustomStaticPage from './src/Screens/CustomStaticPage';
 import BestPracticeScreen from './src/Screens/BestPracticeScreen';
+import UploadBestPracticeScreen from './src/Screens/UploadBestPracticeScreen';
 import BestPracticeItemScreen from './src/Screens/BestPracticeItemScreen';
+
 
 const Stack = createStackNavigator();
 
@@ -52,6 +54,10 @@ function App(): JSX.Element {
         <Stack.Screen
           name="BestPracticeItemScreen"
           component={BestPracticeItemScreen}
+        />
+             <Stack.Screen
+          name="UploadBestPracticeScreen"
+          component={UploadBestPracticeScreen}
         />
         <Stack.Screen name="CustomStaticPage" component={CustomStaticPage} />
       </Stack.Navigator>

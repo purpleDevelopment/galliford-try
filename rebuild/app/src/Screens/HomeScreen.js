@@ -25,16 +25,20 @@ import Header from '../Components/Header';
 // import appStyles from '../Styles/App.module';
 import bgImage from '../assets/navyBG.jpg';
 
-export default function HomeScreen({navigation, route}) {
+export default function HomeScreen({navigation}) {
   const [articleTypes, setArticleTypes] = useState([]);
 
-  useEffect(() => {
+  const getArticleTypes = () => {
     axios({
       method: 'get',
       url: 'https://cdn.contentful.com/spaces/kst95g92kfwh/environments/master/entries?access_token=1833b658c22f833fc1c5b37e52ce3dd31eb8a25ef1d1094154346499ad566e50&content_type=articleType',
     }).then(response => {
       setArticleTypes(response.data.items);
     });
+  };
+
+  useEffect(() => {
+    getArticleTypes();
   }, []);
 
 articleTypes.sort((a,b)=> a.fields.weight - b.fields.weight)
@@ -52,6 +56,10 @@ articleTypes.sort((a,b)=> a.fields.weight - b.fields.weight)
           showBack={false}
           toggleBurger={toggleBurger}
         />
+
+
+
+
         <Header title="Challenging Beliefs, Affecting Behaviour" />
         <ImageBackground
           source={bgImage}

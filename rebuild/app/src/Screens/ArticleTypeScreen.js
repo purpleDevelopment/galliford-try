@@ -47,39 +47,41 @@ export default function ArticleTypeScreen({navigation, route}) {
     setIsBurgerVisable(!isBurgerVisable);
   };
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <NavBar
-        navigation={navigation}
-        showBack={false}
-        toggleBurger={toggleBurger}
-      />
-      <Header title={title} />
-      <ImageBackground
-        source={bgImage}
-        resizeMode="cover"
-        style={{
-          flexGrow: 1,
-        }}>
-        <ScrollView style={{flex: 1}}>
-          {articles.map((article, i) => {
-            return (
-              <ArticleListItem
-                key={i}
-                navigation={navigation}
-                articles={articles}
-                i={i}
-              />
-            );
-          })}
-        </ScrollView>
-      </ImageBackground>
-      <View style={{backgroundColor: '#000000', alignItems: 'center'}}>
-        <Image
-          source={footerImg}
-          style={{width: 171, height: 90}}
-          resizeMode="contain"
+    <View style={{flex: 1, backgroundColor: '#202230'}}>
+      <SafeAreaView style={{flex: 1}}>
+        <NavBar
+          navigation={navigation}
+          showBack={false}
+          toggleBurger={toggleBurger}
         />
-      </View>
-    </SafeAreaView>
+        <Header title={title} />
+        <ImageBackground
+          source={bgImage}
+          resizeMode="cover"
+          style={{
+            flexGrow: 1,
+          }}>
+          <ScrollView style={{flex: 1}}>
+            {articles.map((article, i) => {
+              return (
+                <ArticleListItem
+                  key={i}
+                  navigation={navigation}
+                  articles={articles}
+                  i={i}
+                />
+              );
+            })}
+          </ScrollView>
+        </ImageBackground>
+        <View style={{backgroundColor: '#000000', alignItems: 'center'}}>
+          <Image
+            source={footerImg}
+            style={{width: 171, height: 90}}
+            resizeMode="contain"
+          />
+        </View>
+      </SafeAreaView>
+    </View>
   );
 }

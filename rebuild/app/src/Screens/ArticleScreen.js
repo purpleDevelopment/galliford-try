@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   Linking,
+  StyleSheet,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 
@@ -95,6 +96,7 @@ export default function ArticleScreen({route, navigation}) {
     setIsBurgerVisable(!isBurgerVisable);
   };
 
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <NavBar
@@ -115,7 +117,7 @@ export default function ArticleScreen({route, navigation}) {
           style={{
             color: '#000000',
             fontWeight: 'bold',
-            fontSize: 16,
+            fontSize: 20,
             paddingHorizontal: 30,
             paddingVertical: 15,
           }}>
@@ -128,10 +130,16 @@ export default function ArticleScreen({route, navigation}) {
             borderBottomColor: 'rgba(154, 156, 158, 0.749)',
           }}></View>
         {/* <Text style={{padding: 30, paddingTop: 20}}>{articleMarkup}</Text> */}
-        <View style={{padding: 30, paddingTop: 20}}>
-          <Markdown styles={{text: {color: 'black'}, link: {color: 'black'}, h4: {backgroundColor: 'blue'}, image: {backgroundColor: 'red'}}} onLink={onLinkCallback}>
-            {articleMarkup}
+        <View style={{padding: 30, paddingTop: 10}}>
+
+          <Markdown 
+            styles={markdownStyle.collectiveMd} 
+           onLink={(url) => Linking.openURL(url)}
+          >
+           {articleMarkup}
           </Markdown>
+
+
         </View>
       </ScrollView>
       <View
@@ -175,4 +183,72 @@ export default function ArticleScreen({route, navigation}) {
       </View>
     </SafeAreaView>
   );
+}
+
+
+const markdownStyle = {
+  collectiveMd: {
+    heading1: {
+      color: 'red'
+    },
+    heading2: {
+      color: 'red',
+      textAlign: "right"
+    },
+    heading3: {
+      color: 'white',
+      paddingBottom: 0,
+      fontSize:22,
+      color:'white',
+      marginBottom: 0,
+      paddingLeft:20,
+      backgroundColor: '#B70E0C',
+      marginTop:10,
+      marginBottom:10,
+    },
+    heading4: {
+color: 'white',
+      paddingTop:20,
+      paddingBottom: 0,
+      fontSize:22,
+      color:'white',
+      marginBottom: 0,
+      paddingLeft:80,
+      paddingRight:20,
+      backgroundColor: '#548c99',
+      
+    },
+
+    image:{
+      height:70,
+      width:70,
+      position: 'relative',
+    },
+    autolink:{
+      color:'white',
+      fontSize: 20,
+    },
+    text:{
+      color: '#575967',
+fontSize: 16,
+lineHeight: 22,
+marginBottom: 20,
+    },
+    strong: {
+      fontWeight: 'bold'
+    },
+    em: {
+      fontStlye: 'italic'
+    },
+    blockQuoteSection: {
+      flexDirection: 'row',
+    },
+    blockQuoteSectionBar: {
+      width: 0,
+      height: null,
+      backgroundColor: '#DDDDDD',
+      marginRight: 15,
+    },
+    
+  }
 }

@@ -37,6 +37,9 @@ export default function HomeScreen({navigation, route}) {
     });
   }, []);
 
+articleTypes.sort((a,b)=> a.fields.weight - b.fields.weight)
+
+
   const toggleBurger = () => {
     setIsBurgerVisable(!isBurgerVisable);
   };

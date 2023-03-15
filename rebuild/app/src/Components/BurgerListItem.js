@@ -7,17 +7,25 @@ import React, {useEffect, useState} from 'react';
 // Custom Components
 
 export default function BurgerListItem({navigation, setIsBurgerVisable, page}) {
+
+
+
   const handlePress = () => {
     if (page.fields.title == 'Home') {
       navigation.navigate('HomeScreen');
+    } else if (page.fields.title == 'Upload Best Pratice') {
+        navigation.navigate('UploadBestPracticeScreen');
+      } else if (page.fields.title == 'Sharing Best Practice') {
+          navigation.navigate('BestPracticeScreen');
     } else if (page.sys.contentType.sys.id == 'staticPages') {
-      navigation.navigate('CustomStaticPage', {
+      
+      navigation.push('CustomStaticPage', {
         title: page.fields.title,
         content: page.fields.pageContent,
       });
       // console.log(page.fields.pageContent);
     } else if (page.sys.contentType.sys.id == 'articleType') {
-      navigation.navigate('ArticleTypeScreen', {
+      navigation.push('ArticleTypeScreen', {
         articleTitle: page.fields.title,
         articleTypeID: page.sys.id,
       });

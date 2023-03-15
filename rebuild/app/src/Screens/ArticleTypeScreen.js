@@ -41,6 +41,8 @@ export default function ArticleTypeScreen({navigation, route}) {
     });
   }, []);
 
+  articles.sort((a,b)=> a.fields.articleOrder - b.fields.articleOrder)
+
   const toggleBurger = () => {
     setIsBurgerVisable(!isBurgerVisable);
   };

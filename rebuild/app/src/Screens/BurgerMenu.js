@@ -15,14 +15,27 @@ export default function BurgerMenu({
   const [pages, setPages] = useState([
     {fields: {title: 'Home'}, sys: {id: '0000'}},
   ]);
-  // const aboutLink = {
-  //   fields: {title: 'About this App'},
-  //   sys: {id: '0001', pageType: 'customStatic'},
-  // };
-  // const contactLink = {
-  //   fields: {title: 'Contact Us'},
-  //   sys: {id: '0001', pageType: 'customStatic'},
-  // };
+  const sharingBestPractices = [
+    {
+      fields: {title: 'Sharing Best Practices'},
+      sys: {
+        id: '0001',
+        contentType: {sys: {id: 'bestPractice'}},
+        componentName: 'BestPracticeScreen',
+      },
+    },
+  ];
+
+  const uploadBestPractices = [
+    {
+      fields: {title: 'Upload Best Practices'},
+      sys: {
+        id: '0002',
+        contentType: {sys: {id: 'bestPractice'}},
+        componentName: 'UploadBestPracticeScreen',
+      },
+    },
+  ];
 
   useEffect(() => {
     if (pages.length > 1) {
@@ -34,6 +47,13 @@ export default function BurgerMenu({
       })
         .then(response => {
           setPages(current => [...current, ...response.data.items]);
+        })
+        .then(response => {
+          setPages(current => [
+            ...current,
+            ...sharingBestPractices,
+            ...uploadBestPractices,
+          ]);
         })
         .then(response => {
           axios({

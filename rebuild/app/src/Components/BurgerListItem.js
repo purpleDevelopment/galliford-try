@@ -10,12 +10,13 @@ export default function BurgerListItem({navigation, setIsBurgerVisable, page}) {
   const handlePress = () => {
     if (page.fields.title == 'Home') {
       navigation.navigate('HomeScreen');
+    } else if (page.sys.contentType.sys.id == 'bestPractice') {
+      navigation.navigate(page.sys.componentName);
     } else if (page.sys.contentType.sys.id == 'staticPages') {
       navigation.navigate('CustomStaticPage', {
         title: page.fields.title,
         content: page.fields.pageContent,
       });
-      // console.log(page.fields.pageContent);
     } else if (page.sys.contentType.sys.id == 'articleType') {
       navigation.navigate('ArticleTypeScreen', {
         articleTitle: page.fields.title,

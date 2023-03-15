@@ -23,7 +23,6 @@ export default function NavBar({
   navigation,
   showBack,
   toggleBurger,
-  articleTypes,
 }) {
   const [isBurgerVisable, setIsBurgerVisable] = useState(false);
 
@@ -120,7 +119,6 @@ export default function NavBar({
         navigation={navigation}
         isBurgerVisable={isBurgerVisable}
         setIsBurgerVisable={setIsBurgerVisable}
-        types={articleTypes}
       />
     </View>
   );

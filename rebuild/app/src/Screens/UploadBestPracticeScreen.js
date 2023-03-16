@@ -20,9 +20,21 @@ import ImagePicker from 'react-native-image-crop-picker';
 import styles from '../Styles/App.module';
 import axios from 'axios';
 
+const contentful = require('contentful-management')
+var randomstring = require("randomstring");
+
+const client = contentful.createClient({
+  // This is the access token for this space. Normally you get the token in the Contentful web app
+  accessToken: 'CFPAT-2dc60a52d7b105efa085cf26e135d55479f74b17bdff7b63b24bb029e392fa67',
+})
+
 const toggleBurger = () => {
   setIsBurgerVisable(!isBurgerVisable);
 };
+
+
+
+
 export default function UploadBestPracticeScreen({navigation}) {
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
@@ -34,6 +46,7 @@ export default function UploadBestPracticeScreen({navigation}) {
   const [buData, setBuData] = useState([]);
   const [toolsData, setToolsData] = useState([]);
   const [detailsData, setDetailsData] = useState([]);
+  const [image, setImage] = useState('/assets/camera.jpg');
 
   const getBusinessUnits = () => {
     axios({
@@ -77,6 +90,9 @@ export default function UploadBestPracticeScreen({navigation}) {
     console.log('BU:' + businessUnitValue);
     console.log('Tool:' + toolsValue);
     console.log('Detail:' + detailValue);
+    console.log('Image:' + image);
+
+    uploadBestPractice(image)
   };
 
   const fromLibrary = () => {
@@ -86,9 +102,113 @@ export default function UploadBestPracticeScreen({navigation}) {
       cropping: true,
     }).then(image => {
       console.log(image);
+      setImage(image.sourceURL)
+   
     });
   };
   
+
+const rnd = randomstring.generate(32);
+
+const uploadImage = () => {
+
+console.log('image uplod')
+
+
+// Create asset
+client.getSpace('kst95g92kfwh')
+.then((space) => space.getEnvironment('master'))
+.then((environment) => environment.createAsset({
+  fields: {
+    title: {
+      'en-US': title
+    },
+    file: {
+      'en-US': {
+        contentType: 'image/jpeg',
+        fileName: 'example.jpeg',
+        upload: image
+      }
+    }
+  }
+}))
+.then((asset) => asset.processForAllLocales())
+.then((asset) => console.log(asset))
+.catch(console.error)
+
+}
+
+
+
+const uploadBestPractice = () => {
+
+uploadImage()
+ 
+//console.log(asset)
+/*
+
+})
+
+  client.getSpace('kst95g92kfwh')
+  .then((space) => space.getEnvironment('master'))
+  .then((environment) => environment.createEntryWithId('bestPractice', rnd,  {
+    fields: {
+      title: {
+        'en-US': title,
+      },
+      author: {
+        'en-US': name,
+      },
+      authorEmail: {
+        'en-US': email,
+      },
+      comments: {
+        'en-US': description,
+      },
+    },
+    if (businessUnitValue) {
+      entry.fields.businessUnit = {
+        'en-US': {
+          sys: {
+            id: businessUnitValue,
+            type: 'Link',
+            linkType: 'Entry',
+          },
+        },
+      };
+    },
+    if (toolsValue) {
+      entry.fields.toolsType = {
+        'en-US': {
+          sys: {
+            id: toolsValue,
+            type: 'Link',
+            linkType: 'Entry',
+          },
+        },
+      };
+    },
+    if (detailValue) {
+      entry.fields.detailType = {
+        'en-US': {
+          sys: {
+            id: detailValue,
+            type: 'Link',
+            linkType: 'Entry',
+          },
+        },
+      };
+    },
+
+
+
+  })) .then((entry) => console.log(entry))
+  .catch(console.error)
+*/
+
+}
+
+
   const handlePictureOption = () => {
     Alert.alert('Choose source', '', [
       {
@@ -133,7 +253,7 @@ export default function UploadBestPracticeScreen({navigation}) {
               borderRadius: 10,
             }}>
             <Image
-              source={cameraIcon}
+              source={{uri: image}}
               resizeMode="contain"
               style={{width: 50, height: 50}}
             />

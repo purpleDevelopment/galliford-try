@@ -19,6 +19,7 @@ import screenStyles from '../Styles/Screens.module';
 import ImagePicker from 'react-native-image-crop-picker';
 import styles from '../Styles/App.module';
 import axios from 'axios';
+import BestPracticeScreen from './BestPracticeScreen';
 
 const contentful = require('contentful-management')
 var randomstring = require("randomstring");
@@ -31,9 +32,6 @@ const client = contentful.createClient({
 const toggleBurger = () => {
   setIsBurgerVisable(!isBurgerVisable);
 };
-
-
-
 
 export default function UploadBestPracticeScreen({navigation}) {
   const [description, setDescription] = useState('');
@@ -99,10 +97,11 @@ export default function UploadBestPracticeScreen({navigation}) {
     ImagePicker.openPicker({
       width: 300,
       height: 400,
+      includeBase64: 'true',
       cropping: true,
     }).then(image => {
       console.log(image);
-      setImage(image.sourceURL)
+      setImage(image)
    
     });
   };
@@ -110,9 +109,9 @@ export default function UploadBestPracticeScreen({navigation}) {
 
 const rnd = randomstring.generate(32);
 
-const uploadImage = () => {
+const uploadImage = (image) => {
 
-console.log('image uplod')
+console.log(image.sourceURL)
 
 
 // Create asset
@@ -125,9 +124,9 @@ client.getSpace('kst95g92kfwh')
     },
     file: {
       'en-US': {
-        contentType: 'image/jpeg',
-        fileName: 'example.jpeg',
-        upload: image
+        contentType: image.mime,
+        fileName: image.filename,
+        upload: image.sourceURL
       }
     }
   }
@@ -140,19 +139,25 @@ client.getSpace('kst95g92kfwh')
 
 
 
-const uploadBestPractice = () => {
+const uploadBestPractice = (image) => {
 
-uploadImage()
+//uploadImage(image)
  
-//console.log(asset)
-/*
-
-})
+//console.log(asset) - 
 
   client.getSpace('kst95g92kfwh')
   .then((space) => space.getEnvironment('master'))
   .then((environment) => environment.createEntryWithId('bestPractice', rnd,  {
     fields: {
+      photo: {
+        'en-US': {
+          sys: {
+            id: '52bwQdB545Dd8yoHXpawOv',
+            linkType: 'Asset',
+            type: 'Link',
+          },
+        },
+      },
       title: {
         'en-US': title,
       },
@@ -202,9 +207,14 @@ uploadImage()
 
 
 
-  })) .then((entry) => console.log(entry))
+  })) 
+  .then((entry) => entry.publish())
+  .then((entry) => console.log(entry))
   .catch(console.error)
-*/
+
+
+
+  navigation.navigate('BestPracticeScreen')
 
 }
 
@@ -253,7 +263,7 @@ uploadImage()
               borderRadius: 10,
             }}>
             <Image
-              source={{uri: image}}
+              source={{uri: image.sourceURL}}
               resizeMode="contain"
               style={{width: 50, height: 50}}
             />
